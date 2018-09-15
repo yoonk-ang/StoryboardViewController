@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'StoryboardViewController_Example' do
+  pod 'StoryboardViewController', :path => '../'
+
+  target 'StoryboardViewController_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
