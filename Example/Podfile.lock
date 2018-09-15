@@ -1,0 +1,16 @@
+PODS:
+  - StoryboardViewController (0.1.0)
+
+DEPENDENCIES:
+  - StoryboardViewController (from `../`)
+
+EXTERNAL SOURCES:
+  StoryboardViewController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  StoryboardViewController: 72ec8a0b9ad6a9ce250e021c92a503a43635e09a
+
+PODFILE CHECKSUM: 0eabeb5971faa8922fa3e702700cd26f5a5721b3
+
+COCOAPODS: 1.5.3

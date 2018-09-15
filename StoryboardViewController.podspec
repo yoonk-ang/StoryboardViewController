@@ -9,34 +9,13 @@
 Pod::Spec.new do |s|
   s.name             = 'StoryboardViewController'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of StoryboardViewController.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
-
-  s.homepage         = 'https://github.com/Yoon/StoryboardViewController'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.summary          = 'It enables UIViewControllers to be initialized with parameters even though the are defined in storyboards'
+  s.description      = 'With StoryboardInfoProvidable and StoryboardInstantiable, you can enable UIViewControllers to be initialized with parameters even though the are defined in storyboards. Just make UIViewControllers to conform StoryboardInfoProvidable and do what the compiler says. Then you will see create methods from the UIViewControllers.'
+  s.homepage         = 'https://github.com/yoonk-ang/StoryboardViewController'
+  s.license = 'MIT'
   s.author           = { 'Yoon' => 'razahel@gmail.com' }
-  s.source           = { :git => 'https://github.com/Yoon/StoryboardViewController.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.ios.deployment_target = '8.0'
-
-  s.source_files = 'StoryboardViewController/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'StoryboardViewController' => ['StoryboardViewController/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.source           = { :git => 'https://github.com/yoonk-ang/StoryboardViewController.git', :tag => s.version.to_s }
+  s.ios.deployment_target = '9.0'
+  s.swift_version = '4.0'
+  s.source_files = 'Classes/**/*'
 end
