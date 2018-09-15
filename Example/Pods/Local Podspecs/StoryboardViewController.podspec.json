@@ -1,0 +1,22 @@
+{
+  "name": "StoryboardViewController",
+  "version": "0.1.0",
+  "summary": "A short description of StoryboardViewController.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Yoon/StoryboardViewController",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Yoon": "razahel@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/Yoon/StoryboardViewController.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "StoryboardViewController/Classes/**/*"
+}

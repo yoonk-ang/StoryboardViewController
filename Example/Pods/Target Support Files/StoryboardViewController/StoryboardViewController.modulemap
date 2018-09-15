@@ -1,0 +1,6 @@
+framework module StoryboardViewController {
+  umbrella header "StoryboardViewController-umbrella.h"
+
+  export *
+  module * { export * }
+}

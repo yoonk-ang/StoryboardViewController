@@ -9,16 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBAction private func showExample1(_ sender: UIButton) {
+        present(Example1ViewController.create(), animated: true, completion: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction private func showExample2(_ sender: UIButton) {
+        present(Example2ViewController.create(parameter: "Custom Title"), animated: true, completion: nil)
     }
-
 }
 
