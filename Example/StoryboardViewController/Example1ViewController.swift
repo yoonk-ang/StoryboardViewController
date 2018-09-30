@@ -9,13 +9,11 @@
 import UIKit
 import StoryboardViewController
 
-class Example1ViewController: UIViewController {
+class Example1ViewController: UIViewController, Storyboardable {
+    static let storyboardName = "Main"
+    typealias CreateParameter = Void
+
     @IBAction private func dismiss(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-}
-
-extension Example1ViewController: StoryboardInfoProvidable {
-    static let storyboardName = "Main"
-    typealias CreateParameter = Void
 }

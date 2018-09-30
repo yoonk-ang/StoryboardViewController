@@ -9,7 +9,10 @@
 import UIKit
 import StoryboardViewController
 
-class Example2ViewController: UIViewController {
+class Example2ViewController: UIViewController, Storyboardable {
+    static let storyboardName = "Main"
+    typealias CreateParameter = String
+
     @IBOutlet weak var titleLabel: UILabel!
     
     override func viewDidLoad() {
@@ -21,9 +24,4 @@ class Example2ViewController: UIViewController {
     @IBAction private func dismiss(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-}
-
-extension Example2ViewController: StoryboardInfoProvidable {
-    static let storyboardName = "Main"
-    typealias CreateParameter = String
 }

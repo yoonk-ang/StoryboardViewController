@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol StoryboardInfoProvidable where Self: UIViewController {
+public protocol Storyboardable where Self: UIViewController {
     associatedtype CreateParameter
     static var storyboardName: String { get }
 
@@ -26,7 +26,7 @@ extension UIViewController: StoryboardInstantiable {
 
 private var ParameterHandle: Void?
 
-public extension StoryboardInstantiable where Self: StoryboardInfoProvidable {
+public extension StoryboardInstantiable where Self: Storyboardable {
     private(set) var parameter: CreateParameter {
         set {
             guard objc_getAssociatedObject(self, &ParameterHandle) as? CreateParameter == nil else {
@@ -54,7 +54,7 @@ public extension StoryboardInstantiable where Self: StoryboardInfoProvidable {
     func ready() {}
 }
 
-public extension StoryboardInstantiable where Self: StoryboardInfoProvidable, Self.CreateParameter == Void {
+public extension StoryboardInstantiable where Self: Storyboardable, Self.CreateParameter == Void {
     static func create() -> Self {
         return Self.create(parameter: ())
     }
