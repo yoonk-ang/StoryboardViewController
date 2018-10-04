@@ -1,5 +1,5 @@
 //
-//  StoryboardProtocols.swift
+//  StoryboardViewController.swift
 //  Test
 //
 //  Created by Yoon on 2018. 6. 17..
@@ -9,54 +9,50 @@
 import UIKit
 
 public protocol Storyboardable where Self: UIViewController {
-    associatedtype CreateParameter
+    associatedtype InitialParameterType
     static var storyboardName: String { get }
 
-    /**
-     It is ready with parameters
-     */
-    func ready()
+    func initialParameterDidSet()
 }
 
-public protocol StoryboardInstantiable where Self: UIViewController {
-}
+public protocol StoryboardInitializable {}
 
-extension UIViewController: StoryboardInstantiable {
-}
-
-private var ParameterHandle: Void?
-
-public extension StoryboardInstantiable where Self: Storyboardable {
-    private(set) var parameter: CreateParameter {
-        set {
-            guard objc_getAssociatedObject(self, &ParameterHandle) as? CreateParameter == nil else {
-                return
-            }
-            
-            objc_setAssociatedObject(self, &ParameterHandle, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
-        get {
-            return objc_getAssociatedObject(self, &ParameterHandle) as! CreateParameter
-        }
-    }
-    
-    static func create(parameter: CreateParameter) -> Self! {
+public extension StoryboardInitializable where Self: Storyboardable {
+    static func create(initialParameter: InitialParameterType) -> Self! {
         let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
         
         var viewController = storyboard.instantiateInitialViewController() as? Self
-                                ?? storyboard.instantiateViewController(withIdentifier: String(describing: self)) as? Self
-        viewController?.parameter = parameter
-        viewController?.ready()
+            ?? storyboard.instantiateViewController(withIdentifier: String(describing: self)) as? Self
+        viewController?.initialParameter = initialParameter
         
         return viewController
     }
+
+    private(set) var initialParameter: InitialParameterType {
+        set {
+            guard objc_getAssociatedObject(self, &AssociatedKeys.initialParameterKey) as? InitialParameterType == nil else {
+                return
+            }
+            
+            objc_setAssociatedObject(self, &AssociatedKeys.initialParameterKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            initialParameterDidSet()
+        }
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.initialParameterKey) as! InitialParameterType
+        }
+    }
     
-    func ready() {}
+    func initialParameterDidSet() {}
 }
 
-public extension StoryboardInstantiable where Self: Storyboardable, Self.CreateParameter == Void {
+public extension StoryboardInitializable where Self: Storyboardable, Self.InitialParameterType == Void {
     static func create() -> Self {
-        return Self.create(parameter: ())
+        return Self.create(initialParameter: ())
     }
 }
 
+extension UIViewController: StoryboardInitializable {
+    fileprivate struct AssociatedKeys {
+        static var initialParameterKey = "initialParameterKey"
+    }
+}

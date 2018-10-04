@@ -11,14 +11,14 @@ import StoryboardViewController
 
 class Example2ViewController: UIViewController, Storyboardable {
     static let storyboardName = "Main"
-    typealias CreateParameter = String
+    typealias InitialParameterType = String
 
     @IBOutlet weak var titleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel.text = parameter
+        titleLabel.text = initialParameter
     }
     
     @IBAction private func dismiss(_ sender: UIButton) {

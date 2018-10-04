@@ -10,11 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBAction private func showExample1(_ sender: UIButton) {
-        present(Example1ViewController.create(), animated: true, completion: nil)
+        Example1ViewController.create(initialParameter: (userName: "John", userID: 1001))
+        present(Example1ViewController.create(initialParameter: ), animated: true, completion: nil)
     }
     
     @IBAction private func showExample2(_ sender: UIButton) {
-        present(Example2ViewController.create(parameter: "Custom Title"), animated: true, completion: nil)
+        present(Example2ViewController.create(initialParameter: "Custom Title"), animated: true, completion: nil)
     }
 }
 

@@ -9,9 +9,9 @@
 import UIKit
 import StoryboardViewController
 
-class Example1ViewController: UIViewController, Storyboardable {
+class Example1ViewController: UIViewController, Storyboardable {    
     static let storyboardName = "Main"
-    typealias CreateParameter = Void
+    typealias InitialParameterType = (userName: String, userID: Int)
 
     @IBAction private func dismiss(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)

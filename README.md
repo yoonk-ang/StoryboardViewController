@@ -7,9 +7,24 @@
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+Simply make view controllers conform Storyboardable, then you will have 2 things to be done in the protocol.
 
-## Requirements
+```swift
+class ProfileViewController: UIViewController, Storyboardable {
+    static let storyboardName = "Example"
+    typealias InitialParameterType = (userName: String, userID: Int)
+...
+```
+
+Then you can create the view controllers with parameters like below.
+
+```swift
+    ...
+    let profileViewController = ProfileViewController.create(initialParameter: (userName: "John", userID: 1001)) 
+    ...
+```
+
+You can load the view controllers from storyboards by setting the storyboardName static variable in the code and setting them initial view controllers in the storyboards, or setting the storyboard IDs same as the class names.
 
 ## Installation
 
