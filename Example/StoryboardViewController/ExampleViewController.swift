@@ -1,5 +1,5 @@
 //
-//  Example2ViewController.swift
+//  ExampleViewController.swift
 //  StoryboardViewController_Example
 //
 //  Created by Yoon on 2018. 9. 15..
@@ -9,16 +9,18 @@
 import UIKit
 import StoryboardViewController
 
-class Example2ViewController: UIViewController, Storyboardable {
-    static let storyboardName = "Main"
-    typealias InitialParameterType = String
-
-    @IBOutlet weak var titleLabel: UILabel!
+class ExampleViewController: UIViewController, Storyboardable {
+    struct IntentType {
+        let userName: String
+        let userID: Int
+    }
+    
+    @IBOutlet private weak var titleButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel.text = initialParameter
+        titleButton.setTitle("\(intent.userName), \(intent.userID)", for: .normal)
     }
     
     @IBAction private func dismiss(_ sender: UIButton) {
